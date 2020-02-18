@@ -51,6 +51,7 @@ def urlscrap(url,index) :
     Vid['Tag']= [Tag]
     Vid_df= pd.DataFrame(Vid,index=[index])
     return Vid_df
+#print('asdf')
 def appendData(csv_name):
     with open(csv_name+'_data.csv','a',encoding='utf-8') as data :
         with open(csv_name+'.csv','r') as ref_url :
@@ -58,8 +59,8 @@ def appendData(csv_name):
                 if i > 0 :
                     A = urlscrap(row,i)
                     A.to_csv(data,header=False,sep='|',line_terminator="\n")
-                print(i) # to check the number of clips 
-                t = random.randrange(1,3) 
+                print(i) # to check the number of clips
+                t = random.randrange(1,3)
                 time.sleep(t)
 def getSubscribers(div_s) :
     while True :
@@ -84,6 +85,7 @@ def getDislikes(div_s) :
             return None
 start = pd.datetime.utcnow()+timedelta(hours=7)
 csv_name = input('Please enter your CSV FILE NAME (DONT INCLUDE .CSV): ')
+print('before call fuction')
 appendData(csv_name)
 end = pd.datetime.utcnow()+timedelta(hours=7)
 print('Elapsed Timee: ',str(end-start))
